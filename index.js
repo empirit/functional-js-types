@@ -1,5 +1,5 @@
 const State = require ('./src/state.js')
-const StataT = require ('./src/stateT.js')
+const StateT = require ('./src/stateT.js')
 const Reader = require ('./src/reader.js')
 const ReaderT = require ('./src/readerT.js')
 const Task = require ('./src/task.js')
