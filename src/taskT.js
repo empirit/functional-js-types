@@ -9,7 +9,8 @@ const TaskT = M => {
 		chain: f =>
 		  Task((rej, res) =>
 			   fork(rej, mx =>
-					mx.chain(x => f(x).fork(rej, res))))
+					mx.chain(x => f(x).fork(rej, res)))),
+
 	})
 	Task.lift = x => Task((rej, res) => res(x))
 	Task.of = x => Task((rej, res) => res(M.of(x)))

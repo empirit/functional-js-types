@@ -5,7 +5,7 @@ const EitherT = M => {
             extract: () => mx,
             chain: f => Right(mx.chain(x => f(x).extract())),   
             map: f => Right(mx.map(f)),
-            fold: (_, g) => g(mx)
+            fold: (_, g) => g(mx),
         })
 
     const Left = mx =>
