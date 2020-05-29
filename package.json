@@ -18,5 +18,8 @@
   "homepage": "https://github.com/empirit/functional-js-types#readme",
   "devDependencies": {
     "ava": "^3.8.2"
+  },
+  "dependencies": {
+    "ramda": "^0.27.0"
   }
 }

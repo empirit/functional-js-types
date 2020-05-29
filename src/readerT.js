@@ -1,9 +1,10 @@
-const {sequence} = require ('ramda')
+const {reduce, concat, sequence, reduceRight, ap, map, prepend} = require ('ramda')
 
 const ReaderT = M => {
     const Reader = run =>
         ({
             run,
+
             map: f => Reader(x => run(x).map(f)),
 
             chain: f => Reader(x => run(x).chain(y => f(y).run(x))),

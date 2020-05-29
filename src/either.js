@@ -1,3 +1,5 @@
+const {concat} = require ('ramda')
+
 const Either = (() => {
     const Right = x =>
         ({
@@ -11,7 +13,11 @@ const Either = (() => {
 
             extend: f => f(Right(x)),
 
-            concat: other => other.fold(x => other, y => Right(x.concat(y))),
+            //concat: other => other.fold(left => other, right => Right(x.concat(y))),
+            concat: other => other.isLeft ? other : other.map (a => {
+                console.log (a)
+                return a.concat(x)
+            }),
 
             traverse: (of, f) => f(x).map(Right),
 
