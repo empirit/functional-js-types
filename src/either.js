@@ -13,11 +13,7 @@ const Either = (() => {
 
             extend: f => f(Right(x)),
 
-            //concat: other => other.fold(left => other, right => Right(x.concat(y))),
-            concat: other => other.isLeft ? other : other.map (a => {
-                console.log (a)
-                return a.concat(x)
-            }),
+            concat: other => other.fold(_ => other, r => Right(x.concat(r))),
 
             traverse: (of, f) => f(x).map(Right),
 
