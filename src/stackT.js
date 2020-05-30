@@ -1,4 +1,4 @@
-const {sequence, head, drop, prepend} = require ('ramda')
+const {over, lensIndex, sequence, head, drop, prepend} = require ('ramda')
 
 const StackT = M => {
     const Stack = run => ({
@@ -35,7 +35,8 @@ const StackT = M => {
     Stack.modify = f => Stack(s => M.of([null, f(s)]))
     Stack.put = x => Stack(s => M.of([null, x]))
 
-    Stack.peak = Stack (s => M.of([head (s), s]))
+    Stack.peek = Stack (s => M.of([head (s), s]))
+    Stack.update = f => Stack (s => M.of([null, over (lensIndex (0), f, s)]))
     Stack.fetch = f => Stack (s => M.of([f (s), s]))
     Stack.pop = Stack (s => M.of([head (s), drop (1, s)]))
     Stack.push = x => Stack (s => M.of([null, prepend (x, s)]))
