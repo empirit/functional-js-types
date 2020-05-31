@@ -23,7 +23,7 @@ test ('StackT, map', t => {
 
 })
 
-test ('StackT, push, peak', t => {
+test ('StackT, push, peek', t => {
 
     t.plan (1)
 
@@ -31,7 +31,7 @@ test ('StackT, push, peak', t => {
 
     const x = Transformer.push (2)
                    .join (Transformer.push (3))
-                   .join (Transformer.peak)
+                   .join (Transformer.peek)
 
     x.run ([])
      .fold (

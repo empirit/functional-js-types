@@ -21,12 +21,22 @@ const StateT = M => {
               )
           ),
 
-        product: sm => State (x => sequence (M.of, [run (x), sm.run (x)])),
+        product: sm => State (x =>
+            run (x).chain (([a, s]) =>
+                sm.run (x).chain (([b]) => M.of ([[a, b], s])))),
 
-        product2: sm1 => sm2 => State (x => sequence (M.of, [run (x), sm1.run (x), sm2.run (x)])),
+        product2: sm1 => sm2 => State (x =>
+            run (x).chain (([a, s]) =>
+                sm1.run (x).chain (([b]) => 
+                    sm2.run (x).chain (([c]) => 
+                        M.of ([[a, b, c], s]))))),
 
-        product3: sm1 => sm2 => sm3 => State (x => sequence (M.of, [run (x), sm1.run (x), sm2.run (x), sm3.run (x)]))
-
+        product3: sm1 => sm2 => sm3 => State (x =>
+            run (x).chain (([a, s]) =>
+                sm1.run (x).chain (([b]) => 
+                    sm2.run (x).chain (([c]) => 
+                        sm3.run (x).chain (([d]) => 
+                            M.of ([[a, b, c, d], s]))))))
     });
 
     State.lift = m => State(s => m.map(x => [x, s]))

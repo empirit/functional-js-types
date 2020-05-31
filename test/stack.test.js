@@ -14,13 +14,13 @@ test ('Stack, map', t => {
 
 })
 
-test ('Stack, push, peak', t => {
+test ('Stack, push, peek', t => {
 
     t.plan (1)
 
     const x = Stack.push (2)
                    .join (Stack.push (3))
-                   .join (Stack.peak)
+                   .join (Stack.peek)
 
     const res = x.run ([])
     t.deepEqual (res, [3, [3, 2]])
