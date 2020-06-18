@@ -17,14 +17,14 @@ const State = run => ({
             return [y.concat(y1), s];
         }),
 
-    product: sm => State (x => {
+    zip: sm => State (x => {
         const [a, s] = run (x)
         const [b]    = sm.run (x)
 
         return [[a, b], s]
     }),
 
-    product2: sm1 => sm2 => State (x => {
+    zip2: sm1 => sm2 => State (x => {
         const [a, s] = run (x)
         const [b]    = sm1.run (x)
         const [c]    = sm2.run (x)
@@ -32,7 +32,7 @@ const State = run => ({
         return [[a, b, c], s]
     }),
 
-    product3: sm1 => sm2 => sm3 => State (x => {
+    zip3: sm1 => sm2 => sm3 => State (x => {
         const [a, s] = run (x)
         const [b]    = sm1.run (x)
         const [c]    = sm2.run (x)

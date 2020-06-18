@@ -21,18 +21,18 @@ const StackT = M => {
               )
           ),
 
-        product: sm => Stack (x =>
+        zip: sm => Stack (x =>
             run (x).chain (([a, s]) =>
                 sm.run (x).chain (([b]) =>
                     M.of ([[a, b], s])))),
 
-        product2: sm1 => sm2 => Stack (x =>
+        zip2: sm1 => sm2 => Stack (x =>
             run (x).chain (([a, s]) =>
                 sm1.run (x).chain (([b]) => 
                     sm2.run (x).chain (([c]) => 
                         M.of ([[a, b, c], s]))))),
 
-        product3: sm1 => sm2 => sm3 => Stack (x =>
+        zip3: sm1 => sm2 => sm3 => Stack (x =>
             run (x).chain (([a, s]) =>
                 sm1.run (x).chain (([b]) => 
                     sm2.run (x).chain (([c]) => 

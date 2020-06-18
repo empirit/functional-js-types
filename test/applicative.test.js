@@ -35,7 +35,7 @@ test ('ap', t => {
     const x = Transformer.of (getNode ('a'))
                          .ap (Transformer.lift (Nodes.get))
                          .chain (liftEither)
-                         .product (Transformer.get)
+                         .zip (Transformer.get)
                          .map (makeContext)
                          .chain (liftEither)
 

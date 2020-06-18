@@ -19,14 +19,14 @@ const Stack = run => ({
             return [y.concat(y1), s];
         }),
 
-    product: sm => Stack (x => {
+    zip: sm => Stack (x => {
         const [a, s] = run (x)
         const [b]    = sm.run (x)
 
         return [[a, b], s]
     }),
 
-    product2: sm1 => sm2 => Stack (x => {
+    zip2: sm1 => sm2 => Stack (x => {
         const [a, s] = run (x)
         const [b]    = sm1.run (x)
         const [c]    = sm2.run (x)
@@ -34,7 +34,7 @@ const Stack = run => ({
         return [[a, b, c], s]
     }),
 
-    product3: sm1 => sm2 => sm3 => Stack (x => {
+    zip3: sm1 => sm2 => sm3 => Stack (x => {
         const [a, s] = run (x)
         const [b]    = sm1.run (x)
         const [c]    = sm2.run (x)
